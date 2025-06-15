@@ -1,3 +1,9 @@
+# Vagrant files
+.vagrant/
+*.log
+*.box
+*-local.yml
+
 # Logs
 logs
 *.log
