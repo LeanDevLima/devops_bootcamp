@@ -13,6 +13,13 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+# Terraform files
+*.pem
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
