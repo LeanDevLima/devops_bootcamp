@@ -2,7 +2,7 @@
 resource "aws_instance" "web_server" {
     ami           = data.aws_ami.amazon_linux.id
     instance_type = "t2.micro"
-    user_data     = base64encode(file("${path.module}/user_data.sh"))
+    user_data     = base64encode(file("${path.module}/../user_data.sh"))
     key_name      = aws_key_pair.ec2_key_pair.key_name
 
     # Associa os grupos de segurança criados anteriormente à instância
