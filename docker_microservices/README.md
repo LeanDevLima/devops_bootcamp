@@ -2,7 +2,7 @@
 
 ## Sobre o Projeto
 
-Este projeto demonstra a construção de um sistema de microserviços utilizando Docker Compose, com foco em boas práticas de segurança, uso de imagens minimalistas (Chainguard) e ferramentas modernas de desenvolvimento e auditoria.
+Este projeto demonstra a arquitetura de microserviços desacoplados, cada um responsável por uma funcionalidade específica, comunicando-se via HTTP em uma rede interna Docker. O foco está em boas práticas de segurança, uso de imagens minimalistas (Chainguard) e integração de ferramentas modernas para desenvolvimento e auditoria.
 
 O sistema é composto por:
 - **ms-pessoas-aleatorias**: API Python (FastAPI) para cadastro e sorteio de pessoas.
@@ -11,52 +11,36 @@ O sistema é composto por:
 
 Todos os serviços rodam em containers Docker e se comunicam por uma rede interna isolada.
 
----
+## Conceitos e Arquitetura
 
-## Tecnologias e Conceitos
+- **Microserviços**: Cada serviço é independente, podendo ser desenvolvido, testado e escalado separadamente. Isso facilita manutenção, deploy e evolução do sistema.
+- **Comunicação via HTTP REST**: Os serviços trocam informações por meio de APIs REST, tornando a integração simples e padronizada.
+- **Imagens Minimalistas e Segurança**: O uso de imagens Chainguard reduz a superfície de ataque e o tamanho dos containers, promovendo ambientes mais seguros e eficientes.
+- **Persistência Local**: Cada serviço de backend utiliza um banco de dados SQLite local, simplificando o armazenamento sem necessidade de infraestrutura externa.
+- **Ambientes Reprodutíveis**: Ferramentas como Devbox e direnv garantem que o ambiente de desenvolvimento seja consistente para todos os desenvolvedores.
 
-- **Docker & Docker Compose**: Empacotamento, isolamento e orquestração dos serviços.
-- **Imagens Chainguard**: Uso de imagens minimalistas e seguras (`cgr.dev/chainguard/python`, `cgr.dev/chainguard/go`, `cgr.dev/chainguard/nginx`) para reduzir a superfície de ataque e o tamanho dos containers.
-- **FastAPI**: Framework moderno e performático para APIs Python.
-- **Gin**: Framework web rápido e minimalista para Go.
-- **SQLite & SQLAlchemy/GORM**: Bancos de dados leves e ORM para persistência local.
-- **Tailwind CSS & Alpine.js**: UI moderna, responsiva e reativa sem dependências pesadas.
-- **Devbox & direnv**: Ambientes de desenvolvimento reprodutíveis e automáticos.
+## Tecnologias Utilizadas
 
----
+- **FastAPI** (Python) e **Gin** (Go) para APIs rápidas e modernas.
+- **Tailwind CSS** e **Alpine.js** para uma interface web responsiva e reativa.
+- **Chainguard** para imagens de containers seguras e enxutas.
+- **Trivy** e **Docker Scout** para auditoria e análise de segurança dos containers.
+- **Docker Compose** para orquestração dos serviços.
 
-## Segurança de Containers
+## Segurança
 
-- **Trivy**: Todos os containers são escaneados com [Trivy](https://github.com/aquasecurity/trivy) para detectar vulnerabilidades e segredos antes do deploy.
-- **Docker Scout**: Utilizado para análise contínua de segurança e recomendações de boas práticas.
-- **Imagens Minimalistas**: O uso de Chainguard reduz drasticamente o número de pacotes e possíveis vulnerabilidades.
-- **Rede Docker Interna**: Os serviços só se comunicam entre si pela rede `backend`, isolando o tráfego do host.
+- **Imagens minimalistas**: Menos pacotes, menos vulnerabilidades.
+- **Escaneamento contínuo**: Uso de ferramentas como Trivy e Docker Scout para identificar vulnerabilidades antes do deploy.
+- **Rede interna Docker**: Isolamento dos serviços, evitando exposição desnecessária ao host.
 
----
+## Estrutura do Projeto
 
-## Como Executar
+- `ms-pessoas-aleatorias/`: API de pessoas (Python/FastAPI)
+- `ms-saudacoes-aleatorias/`: API de saudações (Go/Gin)
+- `site-gerador-saudacoes/`: Front-end web
+- `docker-compose.yaml`: Orquestração dos serviços
 
-1. **Build das imagens** (ou use as já publicadas no Docker Hub):
-   ```bash
-   docker compose build
-   ```
-2. **Suba o sistema:**
-   ```bash
-   docker compose up
-   ```
-3. **Acesse o front-end:**  
-   [http://localhost](http://localhost)
+## Saiba mais
 
----
-
-## Conceitos Demonstrados
-
-- Microserviços desacoplados e independentes
-- Comunicação via HTTP REST e rede Docker interna
-- Imagens minimalistas e seguras
-- Práticas de CI/CD e auditoria de segurança
-- Deploy local reprodutível e fácil de testar
-
----
-
-> Veja os READMEs de cada serviço para detalhes de endpoints, exemplos de uso e instruções específicas.
+- Veja os READMEs de cada serviço para detalhes de endpoints, exemplos de uso e instruções específicas.
+- Para detalhes aprofundados sobre Docker, consulte o repositório [learning_docker](https://github.com/lele-sf/learning_docker/blob/main/study_notes.md).
