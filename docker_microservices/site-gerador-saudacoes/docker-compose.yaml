@@ -1,0 +1,27 @@
+services:
+  website:
+    image: lelesf/gerador_saudacoes:2.0
+    ports:
+      - "80:8080"
+    depends_on:
+      - ms-saudacoes-aleatorias
+      - ms-pessoas-aleatorias
+    networks:
+      - backend
+  
+  ms-saudacoes-aleatorias:
+    image: lelesf/ms_saudacoes_aleatorias:2.0
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+
+  ms-pessoas-aleatorias:
+    image: lelesf/ms_pessoas_aleatorias:2.0
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+
+networks:
+  backend: {}
