@@ -25,6 +25,6 @@ variable "docker_image_name" {
 
 variable "docker_image_tag" {
   type    = string
-  default = "latest"
+  default = "2.0"
 }
   
