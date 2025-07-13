@@ -96,7 +96,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./docker_microservices/ms-saudacoes-aleatorias
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
@@ -120,17 +120,17 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform -chdir=infra init
+        run: terraform -chdir=docker_microservices/ms-saudacoes-aleatorias/infra init
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
 
       - name: Terraform Validate
         id: validate
-        run: terraform -chdir=infra validate
+        run: terraform -chdir=docker_microservices/ms-saudacoes-aleatorias/infra validate
 
       - name: Terraform Apply
         id: apply
-        run: terraform -chdir=infra apply -auto-approve
+        run: terraform -chdir=docker_microservices/ms-saudacoes-aleatorias/infra apply -auto-approve
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
           TF_VAR_docker_image_name: ${{ env.DOCKER_IMAGE_NAME }}
@@ -150,11 +150,11 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: terraform -chdir=infra init
+        run: terraform -chdir=docker_microservices/ms-saudacoes-aleatorias/infra init
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
 
       - name: Terraform Destroy
-        run: terraform -chdir=infra destroy -auto-approve
+        run: terraform -chdir=docker_microservices/ms-saudacoes-aleatorias/infra destroy -auto-approve
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
