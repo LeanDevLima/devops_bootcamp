@@ -1,4 +1,4 @@
-f# API de Saudações Aleatórias
+# API de Saudações Aleatórias
 
 Este é um simples microserviço RESTful construído em Go que fornece saudações aleatórias e permite o cadastro de novas saudações.
 
