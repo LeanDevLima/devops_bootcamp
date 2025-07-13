@@ -22,8 +22,8 @@ Este projeto é uma aplicação web de front-end que gera saudações aleatória
 
 Este projeto é **apenas o front-end** e depende de duas APIs de back-end que devem estar em execução localmente para que a aplicação funcione corretamente.
 
-1.  **API de Pessoas**: Deve estar rodando em `http://localhost:8000`.
-2.  **API de Saudações**: Deve estar rodando em `http://localhost:8080`.
+1.  **API de Pessoas**: Deve estar rodando em `http://localhost:8000`
+2.  **API de Saudações**: Deve estar rodando em `http://localhost:8080`
 
 ### Endpoints da API
 
