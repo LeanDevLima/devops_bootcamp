@@ -8,7 +8,7 @@ Para criar e provisionar a máquina virtual:
 ```bash
 $ vagrant up
 ```
-Acesse o site em: http://localhost:8080
+Acesse o site em: http://localhost:8080.
 
 Para destruir o ambiente quando terminar:
 ```bash
