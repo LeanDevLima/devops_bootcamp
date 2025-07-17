@@ -30,6 +30,17 @@ uv run fastapi dev
 
 A aplicação estará disponível em `http://localhost:8000`. Você pode acessar a documentação da API em `http://localhost:8000/docs`.
 
+## Rodando com Docker
+
+Para rodar a aplicação em um container Docker:
+
+```sh
+docker build -t demo_day_project .
+docker run -p 8000:80 demo_day_project
+```
+
+Acesse em: [http://localhost:8000](http://localhost:8000)
+
 ## Testes e Linter
 
 Para rodar os testes, utilize o seguinte comando:
