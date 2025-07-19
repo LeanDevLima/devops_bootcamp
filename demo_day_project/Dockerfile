@@ -1,3 +1,4 @@
+# Stage 1: Build
 FROM python:3.12-slim AS builder
 WORKDIR /app
 
@@ -10,7 +11,7 @@ COPY pyproject.toml uv.lock ./
 # Install the application dependencies.
 RUN uv sync --frozen --no-cache
 
-# Final stage
+# Stage 2: Runtime
 FROM python:3.12-slim
 WORKDIR /app
 
@@ -22,6 +23,3 @@ EXPOSE 80
 
 # Run the application.
 CMD ["/app/.venv/bin/uvicorn", "app.main:app", "--port", "80", "--host", "0.0.0.0"]
-
-# docker build -t demo_day_project .
-# docker run -p 8000:80 demo_day_project
