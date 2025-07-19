@@ -24,11 +24,11 @@ jobs:
         working-directory: ./demo_day_project
 
       - name: Lint com ruff
-        run: ruff check .
+        run: uv run ruff check .
         working-directory: ./demo_day_project
 
       - name: Run tests
-        run: pytest --maxfail=1 --disable-warnings -q
+        run: uv run pytest --maxfail=1 --disable-warnings -q
         working-directory: ./demo_day_project
 
   build-docker:
